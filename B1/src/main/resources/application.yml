@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: B1
+  cloud:
+    nacos:
+      config:
+        import-check:
+          enabled: false
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: localhost:8848
+        namespace:
+
+server:
+  port: 8001
