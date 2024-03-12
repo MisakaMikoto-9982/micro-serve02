@@ -1,6 +1,5 @@
 package org.example.b1.controller;
 
-
 import org.example.b1.service.B1Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

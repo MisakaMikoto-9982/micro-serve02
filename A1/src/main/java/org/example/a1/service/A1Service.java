@@ -1,4 +1,5 @@
-package org.example.b1.service;
+package org.example.a1.service;
+
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,12 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
-@FeignClient(value = "C1")
-public interface B1Service {
-
-//    @GetMapping("C1/findall")
+@FeignClient(value = "B1")
+public interface A1Service {
 //    Optional<Student> findAllStudent();
 
-    @GetMapping("/C1/{ID}")
-    int getStudentAge(@PathVariable(value = "ID") String ID);
+    @GetMapping("/B1/{ID}")
+    int getStudnetAge(@PathVariable(value = "ID") String ID);
 }

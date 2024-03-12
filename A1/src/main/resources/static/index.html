@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Age</title>
+</head>
+<body>
+<input type="text" id="userId" placeholder="Enter User ID">
+<button onclick="getStudentAge()">Get Age</button>
+<p id = "url"></p>
+<p id="userAge"></p>
+<!--<p id = "json"></p>-->
+<!--<p id = "state"></p>-->
+
+<script>
+    function getStudentAge() {
+        var userId = document.getElementById("userId").value;
+        if (userId.trim() === "") {
+            alert("Please enter a valid user ID");
+            return;
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8002/A1/" + userId, true);
+        document.getElementById("url").innerText = "url: " + "http://localhost:8002/A1/" + userId;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                // document.getElementById("state").innerText = "state: " + xhr.status;
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    // document.getElementById("json").innerText = "json: " + response;
+                    document.getElementById("userAge").innerText = "User Age: " + response.age;
+                } else {
+                    // document.getElementById("userAge").innerText = "User ID: " + userId;
+
+                    alert("Failed to fetch user age. Please try again later.");
+                }
+            }
+        };
+        xhr.send();
+    }
+</script>
+</body>
+</html>
